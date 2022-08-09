@@ -1,7 +1,13 @@
+import Header from "./components/Header";
+import AddContact from "./components/AddContact";
+import ContactList from "./components/ContactList";
+
 function App() {
   return (
     <div>
-      hello world
+      <Header />
+      <AddContact />
+      <ContactList />
     </div>
   );
 }
