@@ -1,0 +1,10 @@
+#contact-list {
+    height: 88%;
+    width: 50%;
+    border: 2px solid red;
+}
+#contact-list h1{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    text-align: center;
+}

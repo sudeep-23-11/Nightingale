@@ -7,8 +7,8 @@ function App() {
   return (
     <div id='container'>
       <Header />
-      {/* <AddContact />
-      <ContactList /> */}
+      <AddContact />
+      <ContactList />
     </div>
   );
 }
