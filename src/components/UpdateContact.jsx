@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import '../style/add-contact-style.css'
+import '../style/update-contact-style.css'
 
-export default function AddContact(props) {
+export default function UpdateContact(props) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export default function AddContact(props) {
             alert("Please fill every field");
             return;
         }
-        props.addContactHandler({
+        props.updateContactHandler({
             name: name, email: email, phone: phone, work: work
         });
         setName("");
@@ -25,8 +25,8 @@ export default function AddContact(props) {
     }
 
     return (
-        <div id='add-contact'>
-            <h1>Add Contact</h1>
+        <div id='update-contact'>
+            <h1>Update Contact</h1>
             <label htmlFor="name"><h2>Name</h2></label><br />
             <input type="text" name='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)} autoFocus/><br />
             <label htmlFor="email"><h2>Email</h2></label><br />
@@ -35,7 +35,7 @@ export default function AddContact(props) {
             <input type="tel" name='phone' placeholder='Enter phone number' value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={10}/><br />
             <label htmlFor="work"><h2>Work info</h2></label><br />
             <input type="text" name='work' placeholder='Enter work info' value={work} onChange={(e) => setWork(e.target.value)}/><br />
-            <button type="submit" onClick={submitHandler}>Add</button>
+            <button type="submit" onClick={submitHandler}>Update</button>
         </div>
     )
 }

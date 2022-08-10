@@ -8,9 +8,9 @@ export default function Contact(props) {
             <img id='user' src="icons/user.svg" alt="loading" />
             <div>
                 <h2>{props.contact.name}</h2>
-                <h5>{props.contact.email}</h5>
-                <h5>{props.contact.phone}</h5>
-                <h5>{props.contact.work}</h5>
+                <h4>{props.contact.email}</h4>
+                <h4>{props.contact.phone}</h4>
+                <h4>{props.contact.work}</h4>
             </div>
             <img id='edit' src="icons/edit.svg" alt="loading" />
             <img id='delete' src="icons/delete.svg" alt="loading" />
