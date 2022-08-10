@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import './style/App.css';
 import Header from "./components/Header";
 import AddContact from "./components/AddContact";
@@ -5,25 +7,15 @@ import ContactList from "./components/ContactList";
 
 function App() {
 
-  let contacts = [
-    {
-      name: "Sudeep Srivastava",
-      email: "sudeepsri23@gmail.com",
-      phone: "8004171499",
-      work: "student"
-    },
-    {
-      name: "Aryan Singh",
-      email: "aryanc403@gmail.com",
-      phone: "8983904934",
-      work: "friend"
-    }
-  ];
+  const [contacts, setContacts] = useState([]);
+  let addContactHandler = (contact) => {
+    setContacts([...contacts, contact]);
+  }
 
   return (
     <div id='container'>
       <Header />
-      <AddContact />
+      <AddContact addContactHandler={addContactHandler}/>
       <ContactList contacts={contacts}/>
     </div>
   );
