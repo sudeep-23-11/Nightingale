@@ -8,27 +8,34 @@ import UpdateContact from "./components/UpdateContact";
 
 function App() {
 
-  const LOCAL_STORAGE_KEY = "contacts";
+  const KEY = process.env.REACT_APP_LOCAL_STORAGE_KEY;
 
   const [contacts, setContacts] = useState([]);
   let addContactHandler = (contact) => {
     setContacts([...contacts, contact]);
   }
+  let deleteContactHandler = (id) =>
+  {
+    const newContacts = contacts.filter((data, idx) => {
+      return idx !== id;
+    })
+    setContacts(newContacts);
+  }
 
   useEffect(() => {
-    const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const storedContacts = JSON.parse(localStorage.getItem(KEY));
     if (storedContacts)
     setContacts(storedContacts);
   }, [])
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    localStorage.setItem(KEY, JSON.stringify(contacts));
   }, [contacts])
 
   return (
     <div id='container'>
       <Header />
       <AddContact addContactHandler={addContactHandler}/>
-      <ContactList contacts={contacts}/>
+      <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler}/>
     </div>
   );
 }
