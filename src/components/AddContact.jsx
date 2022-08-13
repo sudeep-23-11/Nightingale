@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
+
 
 import '../style/add-contact-style.css'
 
@@ -35,7 +37,7 @@ export default function AddContact(props) {
             <input type="tel" name='phone' placeholder='Enter phone number' maxLength={10} value={phone} onChange={(e) => setPhone(e.target.value)}/><br />
             <label htmlFor="work"><h2>Work info</h2></label><br />
             <input type="text" name='work' placeholder='Enter work info' value={work} onChange={(e) => setWork(e.target.value)}/><br />
-            <button type="submit" onClick={submitHandler}>Add</button>
+            <Link to="/contact-list"><button type="submit" onClick={submitHandler}>Add</button></Link>
         </div>
     )
 }

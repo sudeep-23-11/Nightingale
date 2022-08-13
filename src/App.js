@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './style/App.css';
 import Header from "./components/Header";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
-import UpdateContact from "./components/UpdateContact";
 
 function App() {
 
@@ -34,8 +34,19 @@ function App() {
   return (
     <div id='container'>
       <Header />
-      <AddContact addContactHandler={addContactHandler}/>
-      <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler}/>
+      <Router>
+          <Routes>
+              <Route path="/" element={
+                  <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler}/>
+              } />
+              <Route exact path="/contact-list" element={
+                  <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler}/>
+              } />
+              <Route exact path="/add-contact" element={
+                  <AddContact addContactHandler={addContactHandler}/>
+              } />
+          </Routes>
+      </Router>
     </div>
   );
 }

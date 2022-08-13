@@ -1,26 +1,27 @@
 #add-contact {
     height: 88%;
-    width: 50%;
+    width: 33.33%;
+    margin-left: 33.33%;
     border: 1px solid red;
 }
 #add-contact h1{
-    margin-top: 2%;
-    margin-bottom: 5%;
+    margin-top: 6%;
+    margin-bottom: 6%;
     margin-left: 10%
 }
 #add-contact label h2 {
-    margin-bottom: -2%;
+    margin-bottom: -2.5%;
     margin-left: 10%;
 }
 #add-contact input {
     height: 5%;
-    width: 30%;
-    margin-bottom: 5%;
+    width: 50%;
+    margin-bottom: 6%;
     margin-left: 10%;
 }
 #add-contact button {
     height: 5%;
-    width: 10%;
+    width: 15%;
     margin-left: 10%;
     background-color: #000000;
     color: #FFFFFF;
