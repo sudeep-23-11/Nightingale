@@ -10,7 +10,7 @@ export default function ContactList(props) {
             <h1>Contact List</h1>
             <Link to="/add-contact"><button type='button'>Create contact</button></Link>
             {props.contacts.map((data, idx)=>{
-                return <Contact key={idx} id={idx} contact={data} deleteContactHandler={props.deleteContactHandler}/>
+                return <Contact key={idx} id={idx} contact={data} deleteContactHandler={props.deleteContactHandler} getId={props.getId}/>
             })}
         </div>
     )

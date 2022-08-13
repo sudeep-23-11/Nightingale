@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 
 import '../style/update-contact-style.css'
 
 export default function UpdateContact(props) {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [work, setWork] = useState("");
+    const [name, setName] = useState(props.contact.name);
+    const [email, setEmail] = useState(props.contact.email);
+    const [phone, setPhone] = useState(props.contact.phone);
+    const [work, setWork] = useState(props.contact.work);
 
     let submitHandler = () => {
         if (name === "" || email === "" || phone === "" || work === "")
@@ -35,7 +36,7 @@ export default function UpdateContact(props) {
             <input type="tel" name='phone' placeholder='Enter phone number' maxLength={10} value={phone} onChange={(e) => setPhone(e.target.value)}/><br />
             <label htmlFor="work"><h2>Work info</h2></label><br />
             <input type="text" name='work' placeholder='Enter work info' value={work} onChange={(e) => setWork(e.target.value)}/><br />
-            <button type="submit" onClick={submitHandler}>Update</button>
+            <Link to="/contact-list"><button type="submit" onClick={submitHandler}>Update</button></Link>
         </div>
     )
 }
