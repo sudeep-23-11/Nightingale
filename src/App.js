@@ -35,6 +35,19 @@ function App() {
     setContacts(newContacts);
   }
 
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  let searchHandler = (search) => {
+    setSearch(search);
+    if (search.length)
+    {
+      const newResults = contacts.filter((data, idx) => {
+        return Object.values(data).join(" ").toLowerCase().includes(search.toLowerCase());
+      })
+      setResults(newResults);
+    }
+  }
+
   useEffect(() => {
     const storedContacts = JSON.parse(localStorage.getItem(KEY));
     if (storedContacts)
@@ -50,10 +63,10 @@ function App() {
       <Router>
           <Routes>
               <Route path="/" element={
-                  <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler} getId={getId}/>
+                  <ContactList contacts={search.length ? results : contacts} deleteContactHandler={deleteContactHandler} getId={getId} searchHandler={searchHandler}/>
               } />
               <Route exact path="/contact-list" element={
-                  <ContactList contacts={contacts} deleteContactHandler={deleteContactHandler} getId={getId}/>
+                  <ContactList contacts={search.length ? results : contacts} deleteContactHandler={deleteContactHandler} getId={getId} searchHandler={searchHandler}/>
               } />
               <Route exact path="/add-contact" element={
                   <AddContact addContactHandler={addContactHandler}/>
