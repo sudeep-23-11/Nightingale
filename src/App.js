@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { v4 as uuid } from 'uuid';
 
 import './style/App.css';
 import Header from "./components/Header";
@@ -16,18 +17,18 @@ function App() {
 
   const [contacts, setContacts] = useState([]);
   let addContactHandler = (contact) => {
-    setContacts([...contacts, contact]);
+    setContacts([...contacts, {id: uuid(), ...contact}]);
   }
   let deleteContactHandler = (id) =>
   {
-    const newContacts = contacts.filter((data, idx) => {
-      return idx !== id;
+    const newContacts = contacts.filter((data) => {
+      return data.id !== id;
     })
     setContacts(newContacts);
   }
   let updateContactHandler = (contact) => {
-    const newContacts = contacts.map((data, idx) => {
-      if (idx !== id)
+    const newContacts = contacts.map((data) => {
+      if (data.id !== id)
       return data;
       else
       return contact;
@@ -41,7 +42,7 @@ function App() {
     setSearch(search);
     if (search.length)
     {
-      const newResults = contacts.filter((data, idx) => {
+      const newResults = contacts.filter((data) => {
         return Object.values(data).join(" ").toLowerCase().includes(search.toLowerCase());
       })
       setResults(newResults);
@@ -72,7 +73,7 @@ function App() {
                   <AddContact addContactHandler={addContactHandler}/>
               } />
               <Route exact path="/update-contact" element={
-                  <UpdateContact contact={contacts[id]} updateContactHandler={updateContactHandler}/>
+                  <UpdateContact contact={contacts.filter((data) => {return data.id === id})[0]} updateContactHandler={updateContactHandler}/>
               } />
           </Routes>
       </Router>
