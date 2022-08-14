@@ -31,7 +31,7 @@ function App() {
       if (data.id !== id)
       return data;
       else
-      return contact;
+      return {id: id, ...contact};
     })
     setContacts(newContacts);
   }
